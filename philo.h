@@ -21,6 +21,31 @@
 #include <sys/time.h>
 #include <limits.h>
 
+// Define color codes
+#define RESET       "\033[0m"
+#define RED         "\033[31m"
+#define GREEN       "\033[32m"
+#define YELLOW      "\033[33m"
+#define BLUE        "\033[34m"
+#define MAGENTA     "\033[35m"
+#define CYAN        "\033[36m"
+#define WHITE       "\033[37m"
+
+// Define background colors
+#define RED_BG      "\033[41m"
+#define GREEN_BG    "\033[42m"
+#define YELLOW_BG   "\033[43m"
+#define BLUE_BG     "\033[44m"
+#define MAGENTA_BG  "\033[45m"
+#define CYAN_BG     "\033[46m"
+#define WHITE_BG    "\033[47m"
+
+// Define text attributes
+#define BOLD        "\033[1m"
+#define UNDERLINE   "\033[4m"
+
+#define	INP_ERR_MSG ""
+
 typedef pthread_mutex_t t_pmtx;
 typedef s_data t_data;
 // Fork
@@ -56,5 +81,7 @@ struct	s_data
 	t_fork	*forks;
 	t_philo	*philos;
 };
+
+void	error_exit(const char *error_str);
 
 #endif

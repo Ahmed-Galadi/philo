@@ -8,8 +8,6 @@ int main(int argc, char *argv[])
 
 	}
 	else 
-	{
-		
-	}
+		error_exit(INP_ERR_MSG);
 	return (0);
 }
