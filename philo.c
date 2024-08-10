@@ -9,9 +9,10 @@ int main(int argc, char *argv[])
 
 	if (argc == 5 || argc == 6)
 	{
-		get_input_data(&data, argv);
+		parse_input_data(&data, argv);
 		data_init(&data);
-
+		start_dining(&data);
+		clean(&data);
 	}
 	else 
 		error_exit(INP_ERR_MSG);
