@@ -44,10 +44,12 @@
 #define BOLD        "\033[1m"
 #define UNDERLINE   "\033[4m"
 
-#define	INP_ERR_MSG ""
+#define	INP_ERR_MSG RED"Wrong Input:\n"\
+RESET BOLD UNDERLINE"Please Enter:"\
+RESET GREEN" ./philo 5 800 200 200 [5]"RESET
 
 typedef pthread_mutex_t t_pmtx;
-typedef s_data t_data;
+typedef struct s_data t_data;
 // Fork
 typedef struct	s_fork
 {
