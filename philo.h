@@ -85,5 +85,6 @@ struct	s_data
 };
 
 void	error_exit(const char *error_str);
+void	parse_input_data(t_data **data, char **argv);
 
 #endif
