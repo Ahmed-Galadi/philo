@@ -95,9 +95,14 @@ struct	s_data
 	t_fork	*forks;
 	t_philo	*philos;
 };
-
+// error handler
 void	error_exit(const char *error_str);
+// input parse
 void	parse_input_data(t_data **data, char **argv);
+// costum functions
 void	*cstm_malloc(size_t bites)
+void	handle_thread(pthread_t *thread, void *(*f)(void *), void *data, t_opcode code);
+void	handle_mutex(t_pmtx *mutex, t_opcode code);
+
 
 #endif
