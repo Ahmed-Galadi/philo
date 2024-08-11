@@ -9,9 +9,7 @@ int main(int argc, char *argv[])
 
 	if (argc == 5 || argc == 6)
 	{
-		data = (t_data *)malloc(sizeof(t_data));
-		if (!data)
-			error_exit(RED"ERROR !\nAllocation failed!");
+		data = (t_data *)cstm_malloc(sizeof(t_data));
 		parse_input_data(&data, argv);
 		data_init(&data);
 		// start_dining(&data);

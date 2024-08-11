@@ -20,6 +20,7 @@
 #include <pthread.h>
 #include <sys/time.h>
 #include <limits.h>
+#include <errno.h>
 
 // Define color codes
 #define RESET       "\033[0m"
@@ -47,6 +48,17 @@
 #define	INP_ERR_MSG RED"Wrong Input:\n"\
 RESET BOLD UNDERLINE"Please Enter:"\
 RESET GREEN" ./philo 5 800 200 200 [5]"RESET
+
+typedef	enum	e_opcode
+{
+	CREATE,
+	DESTROY,
+	INIT,
+	JOIN,
+	DETACH,
+	LOCK,
+	UNLOCK
+}				t_opcode;
 
 typedef pthread_mutex_t t_pmtx;
 typedef struct s_data t_data;
@@ -86,5 +98,6 @@ struct	s_data
 
 void	error_exit(const char *error_str);
 void	parse_input_data(t_data **data, char **argv);
+void	*cstm_malloc(size_t bites)
 
 #endif
