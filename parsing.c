@@ -55,9 +55,13 @@ static long	ft_atol(const char *str)
 void	parse_input_data(t_data **data, char **argv)
 {
 	(*data)->philo_nbr = ft_atol(argv[1]);
-	(*data)->time_to_die = ft_atol(argv[2]);
-	(*data)->time_to_eat = ft_atol(argv[3]);
-	(*data)->time_to_sleep = ft_atol(argv[4]);
+	(*data)->time_to_die = ft_atol(argv[2]) * 1e3;
+	(*data)->time_to_eat = ft_atol(argv[3]) * 1e3;
+	(*data)->time_to_sleep = ft_atol(argv[4]) * 1e3;
+	if ((*data)->time_to_die < 6e4
+		|| (*data)->time_to_eat < 6e4
+		|| (*data)->time_to_sleep < 6e4)
+		error_exit(RED"ERROR !\nValue should be major than 60ms");
 	if (argv[5])
 		(*data)->max_meals = ft_atol(argv[5]);
 	else
