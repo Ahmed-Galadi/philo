@@ -76,8 +76,8 @@ typedef struct	s_philo
 	int			meals_count;
 	bool		is_full;
 	long		last_meal;
-	t_fork		*left_fork;
-	t_fork		*right_fork;
+	t_fork		*fork_1;
+	t_fork		*fork_2;
 	pthread_t	thread_id;
 	t_data		*data;
 }				t_philo;
@@ -100,9 +100,9 @@ void	error_exit(const char *error_str);
 // input parse
 void	parse_input_data(t_data **data, char **argv);
 // costum functions
-void	*cstm_malloc(size_t bites)
+void	*cstm_malloc(size_t bites);
 void	handle_thread(pthread_t *thread, void *(*f)(void *), void *data, t_opcode code);
 void	handle_mutex(t_pmtx *mutex, t_opcode code);
-
+void	data_init(t_data **data);
 
 #endif
