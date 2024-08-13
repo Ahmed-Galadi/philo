@@ -92,6 +92,8 @@ struct	s_data
 	long	max_meals;
 	long	start_simulation;
 	bool	end_simulation;
+	bool	is_threads_ready;
+	t_pmtx	*mutex_table;
 	t_fork	*forks;
 	t_philo	*philos;
 };
