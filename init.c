@@ -36,21 +36,21 @@ static void	philo_init(t_data *data)
 	}
 }
 
-void	data_init(t_data **data)
+void	data_init(t_data *data)
 {
 	int		i;
 
 	i = 0;
-	(*data)->end_simulation = false;
-	(*data)->is_threads_ready = false;
-	(*data)->philos = cstm_malloc(sizeof(t_philo) * (*data)->philo_nbr);
-	handle_mutex((*data)->mutex_table, INIT);
-	(*data)->forks = cstm_malloc(sizeof(t_fork) * (*data)->philo_nbr);
-	while (i < (*data)->philo_nbr)
+	data->end_simulation = false;
+	data->is_threads_ready = false;
+	data->philos = cstm_malloc(sizeof(t_philo) * data->philo_nbr);
+	handle_mutex(&data->mutex_table, INIT);
+	data->forks = cstm_malloc(sizeof(t_fork) * data->philo_nbr);
+	while (i < data->philo_nbr)
 	{
-		handle_mutex(&(*data)->forks[i].fork, INIT);
-		(*data)->forks[i].fork_id = i;	
+		handle_mutex(&data->forks[i].fork, INIT);
+		data->forks[i].fork_id = i;	
 		i++;
 	}
-	philo_init(*data);
+	philo_init(data);
 }

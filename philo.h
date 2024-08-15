@@ -60,6 +60,13 @@ typedef	enum	e_opcode
 	UNLOCK
 }				t_opcode;
 
+typedef enum	e_time
+{
+	MICROSEC,
+	MILISEC,
+	SEC,
+}				t_time;
+
 typedef pthread_mutex_t t_pmtx;
 typedef struct s_data t_data;
 // Fork
@@ -93,7 +100,7 @@ struct	s_data
 	long	start_simulation;
 	bool	end_simulation;
 	bool	is_threads_ready;
-	t_pmtx	*mutex_table;
+	t_pmtx	mutex_table;
 	t_fork	*forks;
 	t_philo	*philos;
 };
@@ -105,6 +112,12 @@ void	parse_input_data(t_data **data, char **argv);
 void	*cstm_malloc(size_t bites);
 void	handle_thread(pthread_t *thread, void *(*f)(void *), void *data, t_opcode code);
 void	handle_mutex(t_pmtx *mutex, t_opcode code);
-void	data_init(t_data **data);
+bool	is_sim_end(t_data *data);
+bool	get_bool_mutex(t_pmtx *mutex, bool *to_get)
+void	set_bool_mutex(t_pmtx *mutex, bool *to_set, bool val)
+void	set_long_mutex(t_pmtx *mutex, long *to_set, bool val)
+long	get_long_mutex(t_pmtx *mutex, long *to_get)
+void	set_bool_mutex(t_pmtx *mutex, bool *to_set, bool val)
+long	get_time(t_time time_code);
 
 #endif
