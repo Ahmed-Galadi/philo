@@ -6,12 +6,21 @@ void	wait_threads(t_data *data)
 	while (!get_bool_mutex(&data->mutex_table, &data->is_threads_ready));
 }
 
-void	simulate_dinner(void *philosopher)
+void	*simulate_dinner(void *philosopher)
 {
 	t_philo	*philo;
 
 	philo = (t_philo *)philosopher;
 	wait_threads(philo->data);
+	while (!is_sim_end(philo->data))
+	{
+		if (philo->is_full)
+			break;
+		eating(philo);
+		sleeping(philo);
+		thinking(philo);
+	}
+	return (NULL);
 }
 
 void	start_dining(t_data *data)
@@ -32,5 +41,8 @@ void	start_dining(t_data *data)
 		}
 	}
 	data->start_simulation = get_time(MILISEC);
-	set_bool_mutex(&data->mutex_table, &data->is_threads_ready, true);	
+	set_bool_mutex(&data->mutex_table, &data->is_threads_ready, true);
+	i = 0;
+	while (i < data->philo_nbr)
+		handle_thread(&data->philos[i++].thread_id, NULL, NULL, JOIN);
 }
