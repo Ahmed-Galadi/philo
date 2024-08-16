@@ -18,6 +18,18 @@ long	get_time(t_time time_code)
 	return (666);
 }
 
+void	accurate_usleep(long usecond, t_data *data)
+{
+	long	start;
+
+	start = get_time(MICROSEC);
+	while (get_time(MICROSEC) - start < usecond)
+	{
+		if (is_sim_end(data))
+			break ;
+	}
+}
+
 void	error_exit(const char *error_str)
 {
 	printf("%s\n", error_str);
