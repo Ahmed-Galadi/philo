@@ -45,6 +45,7 @@ void	data_init(t_data *data)
 	data->is_threads_ready = false;
 	data->philos = cstm_malloc(sizeof(t_philo) * data->philo_nbr);
 	handle_mutex(&data->mutex_table, INIT);
+	handle_mutex(&data->mutex_print, INIT);
 	data->forks = cstm_malloc(sizeof(t_fork) * data->philo_nbr);
 	while (i < data->philo_nbr)
 	{

@@ -75,7 +75,16 @@ typedef struct	s_fork
 	t_pmtx		fork;
 	int			fork_id;
 }				t_fork;
-
+// philosophers state
+typedef enum e_state
+{
+	SLEEPING,
+	EATING,
+	THINKING,
+	FORK1_TAKE,
+	FORK2_TAKE,
+	DEATH,
+}			t_state;
 // Philosopher
 typedef struct	s_philo
 {
