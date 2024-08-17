@@ -101,6 +101,7 @@ struct	s_data
 	bool	end_simulation;
 	bool	is_threads_ready;
 	t_pmtx	mutex_table;
+	t_pmtx	mutex_print;
 	t_fork	*forks;
 	t_philo	*philos;
 };
@@ -119,5 +120,6 @@ void	set_long_mutex(t_pmtx *mutex, long *to_set, bool val)
 long	get_long_mutex(t_pmtx *mutex, long *to_get)
 void	set_bool_mutex(t_pmtx *mutex, bool *to_set, bool val)
 long	get_time(t_time time_code);
+void	accurate_usleep(long usecond, t_data *data)
 
 #endif

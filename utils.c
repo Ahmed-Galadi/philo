@@ -21,12 +21,23 @@ long	get_time(t_time time_code)
 void	accurate_usleep(long usecond, t_data *data)
 {
 	long	start;
+	long	passed;
+	long	left;
 
 	start = get_time(MICROSEC);
 	while (get_time(MICROSEC) - start < usecond)
 	{
 		if (is_sim_end(data))
 			break ;
+		passed = get_time(MICROSEC) - start;
+		left = usecond - passed;
+		if (left > 1e3)
+			usleep(usecond / 2);
+		else
+		{
+			while (get_time(MICROSEC) - start < usec)
+				;
+		}
 	}
 }
 
