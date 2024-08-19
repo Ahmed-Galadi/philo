@@ -31,6 +31,7 @@ static void	philo_init(t_data *data)
 		philo->is_full = false;
 		philo->meals_count = 0;
 		philo->data = data;
+		handle_mutex(&philo->philo_mutex, INIT);
 		init_forks(philo, data->forks, i);
 		i++;
 	}

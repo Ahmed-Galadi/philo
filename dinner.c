@@ -6,6 +6,19 @@ void	wait_threads(t_data *data)
 	while (!get_bool_mutex(&data->mutex_table, &data->is_threads_ready));
 }
 
+static void eating(t_philo *philo)
+{
+	handle_mutex(&philo->fork_1->fork, LOCK);
+	print_state(FORK1_TAKE, philo, DEBUG);
+	handle_mutex(&philo->fork_2->fork, LOCK);
+	print_state(FORK2_TAKE, philo, DEBUG);
+
+	set_long_mutex(&philo->philo_mutex, &philo->last_meal, get_time(MILISEC));
+	philo->meals_count++;
+	print_state(EATING, philo, DEBUG);
+	accurate_usleep(philo->data->time_to_eat, philo->data);
+}
+
 void	*simulate_dinner(void *philosopher)
 {
 	t_philo	*philo;
