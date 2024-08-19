@@ -48,6 +48,7 @@
 #define	INP_ERR_MSG RED"Wrong Input:\n"\
 RESET BOLD UNDERLINE"Please Enter:"\
 RESET GREEN" ./philo 5 800 200 200 [5]"RESET
+#define	DEBUG 0
 
 typedef	enum	e_opcode
 {
@@ -123,12 +124,13 @@ void	*cstm_malloc(size_t bites);
 void	handle_thread(pthread_t *thread, void *(*f)(void *), void *data, t_opcode code);
 void	handle_mutex(t_pmtx *mutex, t_opcode code);
 bool	is_sim_end(t_data *data);
-bool	get_bool_mutex(t_pmtx *mutex, bool *to_get)
-void	set_bool_mutex(t_pmtx *mutex, bool *to_set, bool val)
-void	set_long_mutex(t_pmtx *mutex, long *to_set, bool val)
-long	get_long_mutex(t_pmtx *mutex, long *to_get)
-void	set_bool_mutex(t_pmtx *mutex, bool *to_set, bool val)
+bool	get_bool_mutex(t_pmtx *mutex, bool *to_get);
+void	set_bool_mutex(t_pmtx *mutex, bool *to_set, bool val);
+void	set_long_mutex(t_pmtx *mutex, long *to_set, bool val);
+long	get_long_mutex(t_pmtx *mutex, long *to_get);
+void	set_bool_mutex(t_pmtx *mutex, bool *to_set, bool val);
 long	get_time(t_time time_code);
-void	accurate_usleep(long usecond, t_data *data)
+void	accurate_usleep(long usecond, t_data *data);
+void	print_state(t_philo *philo, t_state state, bool debug);
 
 #endif

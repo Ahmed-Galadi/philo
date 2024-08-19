@@ -16,8 +16,12 @@ void	*simulate_dinner(void *philosopher)
 	{
 		if (philo->is_full)
 			break;
+		//eat
 		eating(philo);
-		sleeping(philo);
+		// sleep
+		print_state(SLEEPING, philo, DEBUG);
+		accurate_usleep(philo->data->time_to_sleep, philo->data);
+		//think
 		thinking(philo);
 	}
 	return (NULL);
