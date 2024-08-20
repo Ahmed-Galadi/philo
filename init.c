@@ -6,15 +6,12 @@ static void	init_forks(t_philo *philo, t_fork *forks, int philo_position)
 	int	philo_nbr;
 
 	philo_nbr = philo->data->philo_nbr;
+	philo->fork_1 = &forks[(philo_position + 1) % philo_nbr];
+	philo->fork_2 = &forks[philo_position];
 	if (philo->philo_id % 2 == 0)
 	{
 		philo->fork_1 = &forks[philo_position];
 		philo->fork_2 = &forks[(philo_position + 1) % philo_nbr];
-	}
-	else 
-	{
-		philo->fork_1 = &forks[(philo_position + 1) % philo_nbr];
-		philo->fork_2 = &forks[philo_position];
 	}
 }
 

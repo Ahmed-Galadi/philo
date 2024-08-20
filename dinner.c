@@ -55,7 +55,7 @@ void	start_dining(t_data *data)
 
 	i = 0;
 	if (data->max_meals == 0)
-		return ;
+		return ;// TO DO the logic if a philo dies or where it will die
 	else if (data->philo_nbr == 1)
 		;
 	else
