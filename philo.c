@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 		data = (t_data *)cstm_malloc(sizeof(t_data));
 		parse_input_data(&data, argv);
 		data_init(data);
-		// start_dining(&data);
+		start_dining(data);
 		// clean(&data);
 		// printf("%ld %ld %ld %ld %ld", data->philo_nbr
 		 // , data->time_to_die , data->time_to_eat, data->time_to_sleep, data->max_meals);

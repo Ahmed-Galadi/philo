@@ -134,5 +134,6 @@ void	set_bool_mutex(t_pmtx *mutex, bool *to_set, bool val);
 long	get_time(t_time time_code);
 void	accurate_usleep(long usecond, t_data *data);
 void	print_state(t_philo *philo, t_state state, bool debug);
+void	start_dining(t_data *data);
 
 #endif
