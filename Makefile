@@ -1,5 +1,5 @@
 CC = cc
-SRCS = philo.c utils.c init.c  costum_functions.c parsing.c
+SRCS = philo.c utils.c costum_functions.c parsing.c init.c philo_utils.c print.c dinner.c 
 CFLAGS = 
 DEPS = philo.h
 LIB = philo.a

@@ -6,6 +6,11 @@ void	wait_threads(t_data *data)
 	while (!get_bool_mutex(&data->mutex_table, &data->is_threads_ready));
 }
 
+static thinking(t_philo *philo)
+{
+	print_state(THINKING, philo, DEBUG);
+}
+
 static void eating(t_philo *philo)
 {
 	handle_mutex(&philo->fork_1->fork, LOCK);
@@ -17,6 +22,10 @@ static void eating(t_philo *philo)
 	philo->meals_count++;
 	print_state(EATING, philo, DEBUG);
 	accurate_usleep(philo->data->time_to_eat, philo->data);
+	if (philo->data->max_meals > 0 && philo->meals_count == philo->data->max_meals)
+		set_bool_mutex(&philo->philo_mutex, philo->is_full, true);
+	handle_mutex(&philo->fork_1->fork, UNLOCK);
+	handle_mutex(&philo->fork_2-fork, UNLOCK);
 }
 
 void	*simulate_dinner(void *philosopher)

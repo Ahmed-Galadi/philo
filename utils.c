@@ -3,7 +3,7 @@
 
 long	get_time(t_time time_code)
 {
-	struct time_val;
+	struct timeval	time_val;
 
 	if (gettimeofday(&time_val, NULL))
 		error_exit(RED"ERROR!\ngettimeofday failuer."RESET);
@@ -35,7 +35,7 @@ void	accurate_usleep(long usecond, t_data *data)
 			usleep(usecond / 2);
 		else
 		{
-			while (get_time(MICROSEC) - start < usec)
+			while (get_time(MICROSEC) - start < usecond)
 				;
 		}
 	}

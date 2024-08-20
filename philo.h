@@ -122,6 +122,7 @@ void	error_exit(const char *error_str);
 void	parse_input_data(t_data **data, char **argv);
 // costum functions
 void	*cstm_malloc(size_t bites);
+void	data_init(t_data *data);
 void	handle_thread(pthread_t *thread, void *(*f)(void *), void *data, t_opcode code);
 void	handle_mutex(t_pmtx *mutex, t_opcode code);
 bool	is_sim_end(t_data *data);
