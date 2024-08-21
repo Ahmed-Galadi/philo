@@ -41,6 +41,7 @@ void	data_init(t_data *data)
 	i = 0;
 	data->end_simulation = false;
 	data->is_threads_ready = false;
+	data->running_threads_count = 0;
 	data->philos = cstm_malloc(sizeof(t_philo) * data->philo_nbr);
 	handle_mutex(&data->mutex_table, INIT);
 	handle_mutex(&data->mutex_print, INIT);

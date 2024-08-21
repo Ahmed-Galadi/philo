@@ -1,13 +1,13 @@
 #include "philo.h"
 
-void set_bool_mutex(t_pmtx *mutex, bool *to_set, bool val)
+void	set_bool_mutex(t_pmtx *mutex, bool *to_set, bool val)
 {
 	handle_mutex(mutex, LOCK);
 	*to_set = val;
 	handle_mutex(mutex, UNLOCK);
 }
 
-bool get_bool_mutex(t_pmtx *mutex, bool *to_get)
+bool	get_bool_mutex(t_pmtx *mutex, bool *to_get)
 {
 	bool output;
 
@@ -34,7 +34,14 @@ long	get_long_mutex(t_pmtx *mutex, long *to_get)
 	return (output);
 }
 
-bool is_sim_end(t_data *data)
+bool	is_sim_end(t_data *data)
 {
 	return (get_bool_mutex(&data->mutex_table, &data->end_simulation));
+}
+
+void	long_pp(t_pmtx *mutex, long *count)
+{
+	handle_mutex(mutex, LOCK);
+	*count += 1;
+	handle_mutex(mutex, UNLOCK);
 }

@@ -103,18 +103,20 @@ typedef struct	s_philo
 // Data Container
 struct	s_data
 {
-	long	philo_nbr;
-	long	time_to_die;
-	long	time_to_sleep;
-	long	time_to_eat;
-	long	max_meals;
-	long	start_simulation;
-	bool	end_simulation;
-	bool	is_threads_ready;
-	t_pmtx	mutex_table;
-	t_pmtx	mutex_print;
-	t_fork	*forks;
-	t_philo	*philos;
+	long		philo_nbr;
+	long		time_to_die;
+	long		time_to_sleep;
+	long		time_to_eat;
+	long		max_meals;
+	long		start_simulation;
+	bool		end_simulation;
+	bool		is_threads_ready;
+	pthread_t	monitor_thread;
+	long		running_threads_count;
+	t_pmtx		mutex_table;
+	t_pmtx		mutex_print;
+	t_fork		*forks;
+	t_philo		*philos;
 };
 // error handler
 void	error_exit(const char *error_str);
@@ -135,5 +137,7 @@ long	get_time(t_time time_code);
 void	accurate_usleep(long usecond, t_data *data);
 void	print_state(t_philo *philo, t_state state, bool debug);
 void	start_dining(t_data *data);
+bool	is_allthreads_runing(t_pmtx *mutex, long *threads, long philo_nbr);
+void	long_pp(t_pmtx *mutex, long *count);
 
 #endif

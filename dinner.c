@@ -55,7 +55,7 @@ void	start_dining(t_data *data)
 
 	i = 0;
 	if (data->max_meals == 0)
-		return ;// TO DO the logic if a philo dies or where it will die
+		return ;
 	else if (data->philo_nbr == 1)
 		;
 	else
@@ -66,6 +66,9 @@ void	start_dining(t_data *data)
 			i++;
 		}
 	}
+	// monitor thread
+	long_pp(&philo->data->mutex_table, &philo->data->running_threads_count);
+	handle_thread(&data->monitor_thread, monitoring, data, CREATE);	
 	data->start_simulation = get_time(MILISEC);
 	set_bool_mutex(&data->mutex_table, &data->is_threads_ready, true);
 	i = 0;
