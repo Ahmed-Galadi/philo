@@ -14,7 +14,16 @@ bool	is_allthreads_runing(t_pmtx *mutex, long *threads, long philo_nbr)
 
 bool	death(t_philo *philo)
 {
-	 
+	long	time_passed;
+	long	time_to_die;
+	
+	if (get_bool_mutex(&philo->philo_mutex, &philo->is_full))
+		return (false);
+	time_passed = get_time(MILISEC) - get_long_mutex(&philo->philo_mutex, &philo->last_meal);
+	time_to_die = philo->data->time_to_die / 1e3;
+	if (time_passed > time_to_die)
+		return (true);
+	return (false);
 }
 
 void	*monitoring(void *data)

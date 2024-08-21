@@ -28,12 +28,27 @@ static void eating(t_philo *philo)
 	handle_mutex(&philo->fork_2->fork, UNLOCK);
 }
 
+void	*one_philo(void *data)
+{
+	t_philo *philo;
+
+	philo = (t_philo *)data;
+	wait_threads(philo->data);
+	set_long_mutex(&philo_mutex, &philo->last_meal, get_time(MILISEC));
+	long_pp(&philo->data->mutex_table, &philo->data->running_threads_count);
+	print_state(FORK1_TAKE, philo, DEBUG);
+	while (!is_sim_end(philo->table))
+		usleep(200);
+	return (NULL);
+}
+
 void	*simulate_dinner(void *philosopher)
 {
 	t_philo	*philo;
 
 	philo = (t_philo *)philosopher;
 	wait_threads(philo->data);
+	set_long_mutex(&philo->philo_mutex, &philo->last_meal, get_time(MILISEC));
 	while (!is_sim_end(philo->data))
 	{
 		if (philo->is_full)
@@ -57,7 +72,7 @@ void	start_dining(t_data *data)
 	if (data->max_meals == 0)
 		return ;
 	else if (data->philo_nbr == 1)
-		;
+		handle_thread(&data->philos[0].thread_id, one_philo, &data->philos[0], CREATE);
 	else
 	{
 		while (i < data->philo_nbr)
