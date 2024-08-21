@@ -12,7 +12,7 @@ bool	is_allthreads_runing(t_pmtx *mutex, long *threads, long philo_nbr)
 	return (output);
 }
 
-bool	death(t_philo *philo)
+static bool	death(t_philo *philo)
 {
 	long	time_passed;
 	long	time_to_die;
@@ -41,8 +41,8 @@ void	*monitoring(void *data)
 		{
 			if (death(m_data->philos + i))
 			{
-				set_bool_mutex(&m_data->mutex_table, &,_data->end_simulation, true);
-				print_state(DEATH, m_data->philos + i, DEBUG);
+				set_bool_mutex(&m_data->mutex_table, &m_data->end_simulation, true);
+				print_state(m_data->philos + i, DEATH, DEBUG);
 			}
 			i++;
 		}

@@ -42,6 +42,7 @@ void	handle_mutex(t_pmtx *mutex, t_opcode code)
 
 static void thread_error_handler(int status, t_opcode code)
 {
+	(void)code;
 	if (status == 0)
 		return ;
 	if (status == EAGAIN)

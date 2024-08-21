@@ -34,10 +34,10 @@ void	*one_philo(void *data)
 
 	philo = (t_philo *)data;
 	wait_threads(philo->data);
-	set_long_mutex(&philo_mutex, &philo->last_meal, get_time(MILISEC));
+	set_long_mutex(&philo->philo_mutex, &philo->last_meal, get_time(MILISEC));
 	long_pp(&philo->data->mutex_table, &philo->data->running_threads_count);
-	print_state(FORK1_TAKE, philo, DEBUG);
-	while (!is_sim_end(philo->table))
+	print_state(philo, FORK1_TAKE, DEBUG);
+	while (!is_sim_end(philo->data))
 		usleep(200);
 	return (NULL);
 }
@@ -48,6 +48,7 @@ void	*simulate_dinner(void *philosopher)
 
 	philo = (t_philo *)philosopher;
 	wait_threads(philo->data);
+	long_pp(&philo->data->mutex_table, &philo->data->running_threads_count);
 	set_long_mutex(&philo->philo_mutex, &philo->last_meal, get_time(MILISEC));
 	while (!is_sim_end(philo->data))
 	{
@@ -82,7 +83,6 @@ void	start_dining(t_data *data)
 		}
 	}
 	// monitor thread
-	long_pp(&philo->data->mutex_table, &philo->data->running_threads_count);
 	handle_thread(&data->monitor_thread, monitoring, data, CREATE);	
 	data->start_simulation = get_time(MILISEC);
 	set_bool_mutex(&data->mutex_table, &data->is_threads_ready, true);

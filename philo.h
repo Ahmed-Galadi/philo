@@ -139,5 +139,6 @@ void	print_state(t_philo *philo, t_state state, bool debug);
 void	start_dining(t_data *data);
 bool	is_allthreads_runing(t_pmtx *mutex, long *threads, long philo_nbr);
 void	long_pp(t_pmtx *mutex, long *count);
+void	*monitoring(void *data);
 
 #endif
