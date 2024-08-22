@@ -48,7 +48,7 @@
 #define	INP_ERR_MSG RED"Wrong Input:\n"\
 RESET BOLD UNDERLINE"Please Enter:"\
 RESET GREEN" ./philo 5 800 200 200 [5]"RESET
-#define	DEBUG 0
+#define	DEBUG 1
 
 typedef	enum	e_opcode
 {
