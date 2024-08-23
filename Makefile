@@ -1,6 +1,6 @@
 CC = cc
 SRCS = philo.c utils.c costum_functions.c parsing.c init.c philo_utils.c print.c dinner.c monitor.c 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -pthread
 DEPS = philo.h
 LIB = philo.a
 OUT = philo

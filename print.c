@@ -37,7 +37,7 @@ void	print_state(t_philo *philo, t_state state, bool debug)
 		else if (state == SLEEPING && !is_sim_end(philo->data))	
 			printf(WHITE"%-6ld"RESET" %d is sleeping\n", time_passed, philo->philo_id);
 		else if (state == DEATH)	
-			printf(RED"%-6ld"RESET" %d is dead\n", time_passed, philo->philo_id);
+			printf(RED"%-6ld %d is dead\n"RESET, time_passed, philo->philo_id);
 	}
 	handle_mutex(&philo->data->mutex_print, UNLOCK);
 }
