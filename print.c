@@ -31,7 +31,7 @@ void	print_state(t_philo *philo, t_state state, bool debug)
 		if ((state == FORK1_TAKE || state == FORK2_TAKE) && !is_sim_end(philo->data))
 			printf(WHITE"%ld"RESET" %d has taken a fork\n", time_passed, philo->philo_id);
 		else if (state == EATING && !is_sim_end(philo->data))	
-			printf(GREEN"%ld"RESET" %d is eating\n", time_passed, philo->philo_id);
+			printf(GREEN"%ld %d is eating\n"RESET, time_passed, philo->philo_id);
 		else if (state == THINKING && !is_sim_end(philo->data))	
 			printf(WHITE"%ld"RESET" %d is thinking\n", time_passed, philo->philo_id);
 		else if (state == SLEEPING && !is_sim_end(philo->data))	
