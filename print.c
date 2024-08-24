@@ -3,7 +3,7 @@
 void	print_state_debug(t_philo *philo, t_state state, long time_passed)
 {
 	if (state == FORK1_TAKE&& !is_sim_end(philo->data))
-		printf(WHITE"%6ld"RESET" %d has taken first fork [%d]\n", time_passed, philo->philo_id, philo->fork_1->fork_id);
+		printf(WHITE"%6ld]]"RESET" %d has taken first fork [%d]\n", time_passed, philo->philo_id, philo->fork_1->fork_id);
 	else if (state == FORK2_TAKE&& !is_sim_end(philo->data))
 		printf(WHITE"%6ld"RESET" %d has taken second fork [%d]\n", time_passed, philo->philo_id, philo->fork_2->fork_id);
 	else if (state == EATING && !is_sim_end(philo->data))	
@@ -29,15 +29,15 @@ void	print_state(t_philo *philo, t_state state, bool debug)
 	else
 	{
 		if ((state == FORK1_TAKE || state == FORK2_TAKE) && !is_sim_end(philo->data))
-			printf(WHITE"%-6ld"RESET" %d has taken a fork\n", time_passed, philo->philo_id);
+			printf(WHITE"%ld"RESET" %d has taken a fork\n", time_passed, philo->philo_id);
 		else if (state == EATING && !is_sim_end(philo->data))	
-			printf(GREEN"%-6ld"RESET" %d is eating\n", time_passed, philo->philo_id);
+			printf(GREEN"%ld"RESET" %d is eating\n", time_passed, philo->philo_id);
 		else if (state == THINKING && !is_sim_end(philo->data))	
-			printf(WHITE"%-6ld"RESET" %d is thinking\n", time_passed, philo->philo_id);
+			printf(WHITE"%ld"RESET" %d is thinking\n", time_passed, philo->philo_id);
 		else if (state == SLEEPING && !is_sim_end(philo->data))	
-			printf(WHITE"%-6ld"RESET" %d is sleeping\n", time_passed, philo->philo_id);
+			printf(WHITE"%ld"RESET" %d is sleeping\n", time_passed, philo->philo_id);
 		else if (state == DEATH)	
-			printf(RED"%-6ld %d is dead\n"RESET, time_passed, philo->philo_id);
+			printf(RED"%ld %d is dead\n"RESET, time_passed, philo->philo_id);
 	}
 	handle_mutex(&philo->data->mutex_print, UNLOCK);
 }

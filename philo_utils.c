@@ -17,7 +17,7 @@ bool	get_bool_mutex(t_pmtx *mutex, bool *to_get)
 	return (output);
 }
 
-void	set_long_mutex(t_pmtx *mutex, long *to_set, bool val)
+void	set_long_mutex(t_pmtx *mutex, long *to_set, long val)
 {
 	handle_mutex(mutex, LOCK);
 	*to_set = val;

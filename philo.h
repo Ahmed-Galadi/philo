@@ -6,7 +6,7 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 09:35:48 by agaladi           #+#    #+#             */
-/*   Updated: 2024/08/10 10:02:12 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/08/24 13:57:25 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@
 #define	INP_ERR_MSG RED"Wrong Input:\n"\
 RESET BOLD UNDERLINE"Please Enter:"\
 RESET GREEN" ./philo 5 800 200 200 [5]"RESET
-#define	DEBUG 1
+#define	DEBUG 0
 
 typedef	enum	e_opcode
 {
@@ -130,7 +130,7 @@ void	handle_mutex(t_pmtx *mutex, t_opcode code);
 bool	is_sim_end(t_data *data);
 bool	get_bool_mutex(t_pmtx *mutex, bool *to_get);
 void	set_bool_mutex(t_pmtx *mutex, bool *to_set, bool val);
-void	set_long_mutex(t_pmtx *mutex, long *to_set, bool val);
+void	set_long_mutex(t_pmtx *mutex, long *to_set, long val);
 long	get_long_mutex(t_pmtx *mutex, long *to_get);
 void	set_bool_mutex(t_pmtx *mutex, bool *to_set, bool val);
 long	get_time(t_time time_code);

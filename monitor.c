@@ -42,7 +42,7 @@ void	*monitoring(void *data)
 			if (death(m_data->philos + i))
 			{
 				set_bool_mutex(&m_data->mutex_table, &m_data->end_simulation, true);
-				print_state(m_data->philos + i, DEATH, DEBUG);
+				print_state((m_data->philos) + i, DEATH, DEBUG);
 			}
 			i++;
 		}
