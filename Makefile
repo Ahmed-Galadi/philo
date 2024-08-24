@@ -1,6 +1,6 @@
 CC = cc
 SRCS = philo.c utils.c custom_functions.c parsing.c init.c philo_utils.c print.c dinner.c monitor.c 
-# CFLAGS = -Wall -Wextra -Werror -pthread
+CFLAGS = -Wall -Wextra -Werror -pthread
 DEPS = philo.h
 OBJS = $(SRCS:.c=.o)
 OUT = philo

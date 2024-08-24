@@ -50,6 +50,8 @@ void	*simulate_dinner(void *philosopher)
 	wait_threads(philo->data);
 	long_pp(&philo->data->mutex_table, &philo->data->running_threads_count);
 	set_long_mutex(&philo->philo_mutex, &philo->last_meal, get_time(MILISEC));
+	if (philo->philo_id > 1 && philo->philo_id % 2 == 0)
+		usleep(200);
 	while (!is_sim_end(philo->data))
 	{
 		if (philo->is_full)
