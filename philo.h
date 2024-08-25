@@ -6,7 +6,7 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 09:35:48 by agaladi           #+#    #+#             */
-/*   Updated: 2024/08/25 17:56:00 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/08/25 21:41:27 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,7 @@ struct	s_data
 	t_pmtx		mutex_print;
 	t_fork		*forks;
 	t_philo		*philos;
+	
 };
 // error handler
 void	error_exit(const char *error_str);
