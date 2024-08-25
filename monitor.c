@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   monitor.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/25 19:44:41 by agaladi           #+#    #+#             */
+/*   Updated: 2024/08/25 19:45:47 by agaladi          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
 bool	is_allthreads_runing(t_pmtx *mutex, long *threads, long philo_nbr)
@@ -16,10 +28,11 @@ static bool	death(t_philo *philo)
 {
 	long	time_passed;
 	long	time_to_die;
-	
+
 	if (get_bool_mutex(&philo->philo_mutex, &philo->is_full))
 		return (false);
-	time_passed = get_time(MILISEC) - get_long_mutex(&philo->philo_mutex, &philo->last_meal);
+	time_passed = get_time(MILISEC) - get_long_mutex(
+			&philo->philo_mutex, &philo->last_meal);
 	time_to_die = philo->data->time_to_die / 1e3;
 	if (time_passed > time_to_die)
 		return (true);
@@ -32,7 +45,8 @@ void	*monitoring(void *data)
 	int		i;
 
 	m_data = (t_data *)data;
-	while (!is_allthreads_runing(&m_data->mutex_table, &m_data->running_threads_count, m_data->philo_nbr))
+	while (!is_allthreads_runing(&m_data->mutex_table,
+			&m_data->running_threads_count, m_data->philo_nbr))
 		;
 	while (1)
 	{
@@ -41,7 +55,8 @@ void	*monitoring(void *data)
 		{
 			if (death(m_data->philos + i))
 			{
-				set_bool_mutex(&m_data->mutex_table, &m_data->end_simulation, true);
+				set_bool_mutex(&m_data->mutex_table,
+					&m_data->end_simulation, true);
 				print_state((m_data->philos) + i, DEATH, DEBUG);
 			}
 			i++;

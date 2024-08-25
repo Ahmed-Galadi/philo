@@ -43,7 +43,7 @@ void	accurate_usleep(long usecond, t_data *data)
 		passed = get_time(MICROSEC) - start;
 		left = usecond - passed;
 		if (left > 1e3)
-			usleep(50);
+			usleep(500);
 		else
 		{
 			while (get_time(MICROSEC) - start < usecond)

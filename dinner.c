@@ -6,7 +6,7 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 17:51:24 by agaladi           #+#    #+#             */
-/*   Updated: 2024/08/25 18:03:27 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/08/25 19:41:43 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,21 +75,20 @@ void	start_dining(t_data *data)
 {
 	int		i;
 
-	i = 0;
+	i = -1;
 	data->start_simulation = get_time(MILISEC);
 	if (data->max_meals == 0)
 		return ;
 	else if (data->philo_nbr == 1)
-		handle_thread(&data->philos[0].thread_id,one_philo, &data->philos[0], CREATE);
+		handle_thread(&data->philos[0].thread_id, one_philo,
+			&data->philos[0], CREATE);
 	else
 	{
-		while (i < data->philo_nbr)
-		{
-			handle_thread(&data->philos[i].thread_id, simulate_dinner, &data->philos[i], CREATE);
-			i++;
-		}
+		while (++i < data->philo_nbr)
+			handle_thread(&data->philos[i].thread_id,
+				simulate_dinner, &data->philos[i], CREATE);
 	}
-	handle_thread(&data->monitor_thread, monitoring, data, CREATE);	
+	handle_thread(&data->monitor_thread, monitoring, data, CREATE);
 	set_bool_mutex(&data->mutex_table, &data->is_threads_ready, true);
 	i = 0;
 	while (i < data->philo_nbr)

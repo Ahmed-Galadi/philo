@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/25 19:43:10 by agaladi           #+#    #+#             */
+/*   Updated: 2024/08/25 19:43:48 by agaladi          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "philo.h"
 
@@ -49,7 +60,7 @@ void	data_init(t_data *data)
 	while (i < data->philo_nbr)
 	{
 		handle_mutex(&data->forks[i].fork, INIT);
-		data->forks[i].fork_id = i;	
+		data->forks[i].fork_id = i;
 		i++;
 	}
 	philo_init(data);

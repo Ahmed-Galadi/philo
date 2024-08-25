@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/25 19:47:15 by agaladi           #+#    #+#             */
+/*   Updated: 2024/08/25 19:47:43 by agaladi          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
 void	set_bool_mutex(t_pmtx *mutex, bool *to_set, bool val)
@@ -9,7 +21,7 @@ void	set_bool_mutex(t_pmtx *mutex, bool *to_set, bool val)
 
 bool	get_bool_mutex(t_pmtx *mutex, bool *to_get)
 {
-	bool output;
+	bool	output;
 
 	handle_mutex(mutex, LOCK);
 	output = *to_get;

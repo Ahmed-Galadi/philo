@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/25 19:46:08 by agaladi           #+#    #+#             */
+/*   Updated: 2024/08/25 19:46:50 by agaladi          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "philo.h"
 
-static inline bool ft_isspace(char c)
+static inline bool	ft_isspace(char c)
 {
 	return ((c >= 9 && c <= 13) || c == 32);
 }
@@ -15,7 +26,7 @@ static const char	*is_valid(const char *str)
 {
 	const char	*output;
 	int			nbr_len;
-	
+
 	nbr_len = 0;
 	while (ft_isspace(*str))
 		str++;
@@ -39,7 +50,7 @@ static long	ft_atol(const char *str)
 {
 	long	output;
 	int		i;
-	
+
 	str = is_valid(str);
 	output = 0;
 	i = 0;
@@ -47,7 +58,7 @@ static long	ft_atol(const char *str)
 	{
 		output = (output * 10) + (str[i++] - '0');
 		if (output > INT_MAX)
-			error_exit(RED"ERROR!\nNumber is bigger than INT_MAX !"RESET);	
+			error_exit(RED"ERROR!\nNumber is bigger than INT_MAX !"RESET);
 	}
 	return (output);
 }
