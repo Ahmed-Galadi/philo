@@ -34,7 +34,7 @@ void	*monitoring(void *data)
 	m_data = (t_data *)data;
 	while (!is_allthreads_runing(&m_data->mutex_table, &m_data->running_threads_count, m_data->philo_nbr))
 		;
-	while (!is_sim_end(m_data))
+	while (1)
 	{
 		i = 0;
 		while (i < m_data->philo_nbr && !is_sim_end(m_data))

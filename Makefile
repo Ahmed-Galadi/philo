@@ -20,3 +20,6 @@ fclean: clean
 	rm -rf $(OUT)
 
 re: fclean all
+
+rec: re
+	make clean

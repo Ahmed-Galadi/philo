@@ -6,7 +6,7 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 09:35:48 by agaladi           #+#    #+#             */
-/*   Updated: 2024/08/24 13:57:25 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/08/25 17:33:43 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,21 @@
 #define BOLD        "\033[1m"
 #define UNDERLINE   "\033[4m"
 
+// [eat, sleep, think] messages
+#define FORK_MSG BOLD"%ld "BLUE_BG"%d"RESET" "BLUE BOLD"\
+has taken a fork ‎𐂐\n"RESET
+#define EATING_MSG BOLD UNDERLINE"%ld "RESET BOLD GREEN_BG"\
+%d"RESET" "GREEN BOLD UNDERLINE"is eating ‎𐂐◯𓇋(๑ᵔ⤙ᵔ๑)\n"RESET
+#define SLEEPING_MSG BOLD"%ld "MAGENTA_BG"%d"RESET" "MAGENTA BOLD"\
+is sleeping ꒰ ꒡⌓꒡꒱zzz\n"RESET
+#define THINKING_MSG BOLD"%ld "YELLOW_BG"%d"RESET"\
+ "YELLOW BOLD"is thinking (≖_≖ )?\n"RESET
+#define DEATH_MSG UNDERLINE"%ld "RESET BOLD RED_BG"\
+%d"RESET" "RED BOLD UNDERLINE"is dead "RESET BOLD RED"(×_×)\n"RESET
+
 #define	INP_ERR_MSG RED"Wrong Input:\n"\
 RESET BOLD UNDERLINE"Please Enter:"\
-RESET GREEN" ./philo 5 800 200 200 [5]"RESET
+RESET GREEN" ./philo <philo_nbr> <time_to_die> <time_to_eat> <time_to_sleep> [meals]"RESET
 #define	DEBUG 0
 
 typedef	enum	e_opcode

@@ -58,6 +58,8 @@ void	parse_input_data(t_data **data, char **argv)
 	(*data)->time_to_die = ft_atol(argv[2]) * 1e3;
 	(*data)->time_to_eat = ft_atol(argv[3]) * 1e3;
 	(*data)->time_to_sleep = ft_atol(argv[4]) * 1e3;
+	if ((*data)->philo_nbr <= 0)
+		error_exit(RED"ERROR !\nphilos_nbr sould be major than 0");
 	if ((*data)->time_to_die < 6e4
 		|| (*data)->time_to_eat < 6e4
 		|| (*data)->time_to_sleep < 6e4)
@@ -67,10 +69,3 @@ void	parse_input_data(t_data **data, char **argv)
 	else
 		(*data)->max_meals = -1;
 }
-
-
-
-
-
-
-

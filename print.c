@@ -29,15 +29,15 @@ void	print_state(t_philo *philo, t_state state, bool debug)
 	else
 	{
 		if ((state == FORK1_TAKE || state == FORK2_TAKE) && !is_sim_end(philo->data))
-			printf(WHITE"%ld"RESET" %d has taken a fork\n", time_passed, philo->philo_id);
+			printf(FORK_MSG, time_passed, philo->philo_id);
 		else if (state == EATING && !is_sim_end(philo->data))	
-			printf(GREEN"%ld %d is eating\n"RESET, time_passed, philo->philo_id);
+			printf(EATING_MSG, time_passed, philo->philo_id);
 		else if (state == THINKING && !is_sim_end(philo->data))	
-			printf(WHITE"%ld"RESET" %d is thinking\n", time_passed, philo->philo_id);
+			printf(THINKING_MSG, time_passed, philo->philo_id);
 		else if (state == SLEEPING && !is_sim_end(philo->data))	
-			printf(WHITE"%ld"RESET" %d is sleeping\n", time_passed, philo->philo_id);
+			printf(SLEEPING_MSG, time_passed, philo->philo_id);
 		else if (state == DEATH)	
-			printf(RED"%ld %d is dead\n"RESET, time_passed, philo->philo_id);
+			printf(DEATH_MSG, time_passed, philo->philo_id);
 	}
 	handle_mutex(&philo->data->mutex_print, UNLOCK);
 }
