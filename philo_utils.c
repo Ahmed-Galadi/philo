@@ -34,11 +34,6 @@ long	get_long_mutex(t_pmtx *mutex, long *to_get)
 	return (output);
 }
 
-bool	is_sim_end(t_data *data)
-{
-	return (get_bool_mutex(&data->mutex_table, &data->end_simulation));
-}
-
 void	long_pp(t_pmtx *mutex, long *count)
 {
 	handle_mutex(mutex, LOCK);

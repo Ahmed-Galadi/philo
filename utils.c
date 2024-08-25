@@ -1,6 +1,17 @@
 
 #include "philo.h"
 
+void	wait_threads(t_data *data)
+{
+	while (!get_bool_mutex(&data->mutex_table, &data->is_threads_ready))
+		;
+}
+
+bool	is_sim_end(t_data *data)
+{
+	return (get_bool_mutex(&data->mutex_table, &data->end_simulation));
+}
+
 long	get_time(t_time time_code)
 {
 	struct timeval	time_val;
@@ -32,7 +43,7 @@ void	accurate_usleep(long usecond, t_data *data)
 		passed = get_time(MICROSEC) - start;
 		left = usecond - passed;
 		if (left > 1e3)
-			usleep(100);
+			usleep(50);
 		else
 		{
 			while (get_time(MICROSEC) - start < usecond)

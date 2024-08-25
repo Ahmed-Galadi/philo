@@ -6,7 +6,7 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 09:35:48 by agaladi           #+#    #+#             */
-/*   Updated: 2024/08/25 17:33:43 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/08/25 17:56:00 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,7 @@ void	set_long_mutex(t_pmtx *mutex, long *to_set, long val);
 long	get_long_mutex(t_pmtx *mutex, long *to_get);
 void	set_bool_mutex(t_pmtx *mutex, bool *to_set, bool val);
 long	get_time(t_time time_code);
+void	wait_threads(t_data *data);
 void	accurate_usleep(long usecond, t_data *data);
 void	print_state(t_philo *philo, t_state state, bool debug);
 void	start_dining(t_data *data);

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   custom_functions.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/25 17:45:49 by agaladi           #+#    #+#             */
+/*   Updated: 2024/08/25 17:50:23 by agaladi          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
 void	*cstm_malloc(size_t bites)
@@ -17,9 +29,11 @@ static void	mutex_error_handle(int status, t_opcode code)
 	if (status == EINVAL && (code == LOCK || code == UNLOCK || code == DESTROY))
 		error_exit(RED"ERROR!\nThe value specified by mutex is invalid!"RESET);
 	else if (code == INIT && status == EINVAL)
-		error_exit(RED"ERROR!\nThe value specified by attr is invalid!"RESET);
+		error_exit(RED"ERROR!\nThe value specified \
+		by attr is invalid!"RESET);
 	else if (code == EDEADLK)
-		error_exit("ERROR!\nA deadlock would occur if the thread blocked waiting for mutex!");
+		error_exit("ERROR!\nA deadlock would occur \
+		if the thread blocked waiting for mutex!");
 	else if (status == ENOMEM)
 		error_exit(RED"ERROR!\nProcess can't allocate enough memo!"RESET);
 	else if (status == EBUSY)
@@ -36,11 +50,11 @@ void	handle_mutex(t_pmtx *mutex, t_opcode code)
 		mutex_error_handle(pthread_mutex_init(mutex, NULL), code);
 	else if (code == DESTROY)
 		mutex_error_handle(pthread_mutex_destroy(mutex), code);
-	else 
+	else
 		error_exit(RED"Wrong operation code for handle_mutex!"RESET);
 }
 
-static void thread_error_handler(int status, t_opcode code)
+static void	thread_error_handler(int status, t_opcode code)
 {
 	(void)code;
 	if (status == 0)
@@ -60,7 +74,10 @@ static void thread_error_handler(int status, t_opcode code)
 			 thread specifies the calling thread"RESET);
 }
 
-void	handle_thread(pthread_t *thread, void *(*f)(void *), void *data, t_opcode code)
+void	handle_thread(
+		pthread_t *thread,
+		void *(*f)(void *),
+		void *data, t_opcode code)
 {
 	if (code == CREATE)
 		thread_error_handler(pthread_create(thread, NULL, f, data), code);
@@ -68,12 +85,7 @@ void	handle_thread(pthread_t *thread, void *(*f)(void *), void *data, t_opcode c
 		thread_error_handler(pthread_join(*thread, NULL), code);
 	else if (code == DETACH)
 		thread_error_handler(pthread_detach(*thread), code);
-	else 
-		error_exit(RED"ERROR!\nthread_handle: wrong code, use <CREATE>, <JOIN> or <DETACH>"RESET);
+	else
+		error_exit(RED"ERROR!\nthread_handle: wrong code, \
+		use <CREATE>, <JOIN> or <DETACH>"RESET);
 }
-
-
-
-
-
-
