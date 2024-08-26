@@ -6,13 +6,13 @@
 #    By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/25 19:44:15 by agaladi           #+#    #+#              #
-#    Updated: 2024/08/26 00:20:31 by agaladi          ###   ########.fr        #
+#    Updated: 2024/08/26 02:10:49 by agaladi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 SRCS = philo.c utils.c custom_functions.c parsing.c init.c philo_utils.c print.c dinner.c monitor.c 
-CFLAGS = -Wall -Wextra -Werror -pthread
+CFLAGS = -Wall -Wextra -Werror -pthread -fsanitize=thread
 DEPS = philo.h
 OBJS = $(SRCS:.c=.o)
 OUT = philo

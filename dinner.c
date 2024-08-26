@@ -6,7 +6,7 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 17:51:24 by agaladi           #+#    #+#             */
-/*   Updated: 2024/08/26 01:12:23 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/08/26 01:46:35 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,6 @@ void	*simulate_dinner(void *philosopher)
 	wait_threads(philo->data);
 	long_pp(&philo->data->mutex_table, &philo->data->running_threads_count);
 	set_long_mutex(&philo->philo_mutex, &philo->last_meal, get_time(MILISEC));
-	// if (philo->philo_id > 1 && philo->philo_id % 2 == 0)
-	// 	usleep(philo->data->time_to_eat);
 	desync_philos(philo);
 	while (!is_sim_end(philo->data))
 	{
