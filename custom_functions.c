@@ -6,7 +6,7 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 17:45:49 by agaladi           #+#    #+#             */
-/*   Updated: 2024/08/26 02:21:30 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/08/26 22:42:36 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ void	handle_mutex(t_pmtx *mutex, t_opcode code)
 	else if (code == UNLOCK)
 		pthread_mutex_unlock(mutex);
 	else if (code == INIT)
-		pthread_mutex_init(mutex, NULL);
+	{
+		if (pthread_mutex_init(mutex, NULL))
+			error_exit(RED"ERROR!\npthread_mutex_init Failed!\n"RESET);
+	}
 	else if (code == DESTROY)
 		pthread_mutex_destroy(mutex);
 	else
@@ -50,4 +53,15 @@ void	handle_thread(
 	else
 		error_exit(RED"ERROR!\nthread_handle: wrong code, \
 		use <CREATE>, <JOIN> or <DETACH>"RESET);
+}
+
+void	desync_philos(t_philo *philo)
+{
+	if (philo->data->philo_nbr % 2 == 0)
+	{
+		if (philo->philo_id % 2 == 0)
+			accurate_usleep(3e4, philo->data);
+	}
+	else
+		thinking(philo, true);
 }

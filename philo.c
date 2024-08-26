@@ -6,7 +6,7 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 19:47:59 by agaladi           #+#    #+#             */
-/*   Updated: 2024/08/26 02:17:30 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/08/26 23:21:49 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 #include <fcntl.h>
 
 void	clean(t_data **data)
-{	
+{
 	long	i;
 
 	i = 0;
-	while (i < (*data)->philo_nbr - 1)
+	while (i < (*data)->philo_nbr)
 	{
 		handle_mutex(&(*data)->forks[i].fork, UNLOCK);
 		handle_mutex(&(*data)->forks[i].fork, DESTROY);
 		i++;
 	}
 	i = 0;
-	while(i < (*data)->philo_nbr)
+	while (i < (*data)->philo_nbr)
 	{
 		handle_mutex(&(*data)->philos[i].philo_mutex, UNLOCK);
 		handle_mutex(&(*data)->philos[i].philo_mutex, DESTROY);
