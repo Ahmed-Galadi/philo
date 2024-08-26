@@ -6,11 +6,12 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 19:47:59 by agaladi           #+#    #+#             */
-/*   Updated: 2024/08/25 19:49:37 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/08/26 00:23:15 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+#include <fcntl.h>
 
 int	main(int argc, char *argv[])
 {

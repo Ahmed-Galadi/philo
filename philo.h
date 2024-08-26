@@ -6,7 +6,7 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 09:35:48 by agaladi           #+#    #+#             */
-/*   Updated: 2024/08/25 21:41:27 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/08/25 22:41:02 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,11 @@
 
 // [eat, sleep, think] messages
 #define FORK_MSG BOLD"%ld "BLUE_BG"%d"RESET" "BLUE BOLD"\
-has taken a fork ‎𐂐\n"RESET
+has taken a fork (っ'-')‎𐂐\n"RESET
 #define EATING_MSG BOLD UNDERLINE"%ld "RESET BOLD GREEN_BG"\
 %d"RESET" "GREEN BOLD UNDERLINE"is eating ‎𐂐◯𓇋(๑ᵔ⤙ᵔ๑)\n"RESET
 #define SLEEPING_MSG BOLD"%ld "MAGENTA_BG"%d"RESET" "MAGENTA BOLD"\
-is sleeping ꒰ ꒡⌓꒡꒱zzz\n"RESET
+is sleeping ꒰꒡⌓꒡꒱zzz\n"RESET
 #define THINKING_MSG BOLD"%ld "YELLOW_BG"%d"RESET"\
  "YELLOW BOLD"is thinking (≖_≖ )?\n"RESET
 #define DEATH_MSG UNDERLINE"%ld "RESET BOLD RED_BG"\

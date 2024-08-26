@@ -6,15 +6,28 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 17:51:24 by agaladi           #+#    #+#             */
-/*   Updated: 2024/08/25 22:15:18 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/08/26 01:12:23 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static void	thinking(t_philo *philo)
+static void	thinking(t_philo *philo, bool is_sync)
 {
-	print_state(philo, THINKING, DEBUG);
+	long	time_to_think;
+	long	time_to_eat;
+	long	time_to_sleep;
+
+	if (!is_sync)
+		print_state(philo, THINKING, DEBUG);
+	if (philo->data->philo_nbr % 2 == 0)
+		return ;
+	time_to_eat = philo->data->time_to_eat;
+	time_to_sleep = philo->data->time_to_sleep;
+	time_to_think = time_to_eat * 2 - time_to_sleep;
+	if (time_to_think < 0)
+		time_to_think = 0;
+	accurate_usleep(time_to_think * 0.42, philo->data);
 }
 
 static void	eating(t_philo *philo)
@@ -45,8 +58,19 @@ void	*one_philo(void *data)
 	long_pp(&philo->data->mutex_table, &philo->data->running_threads_count);
 	print_state(philo, FORK1_TAKE, DEBUG);
 	while (!is_sim_end(philo->data))
-		usleep(600);
+		usleep(200);
 	return (NULL);
+}
+
+void	desync_philos(t_philo *philo)
+{
+	if (philo->data->philo_nbr % 2 == 0)
+	{
+		if (philo->philo_id % 2 == 0)
+			accurate_usleep(3e4, philo->data);
+	}
+	else
+		thinking(philo, true);
 }
 
 void	*simulate_dinner(void *philosopher)
@@ -57,8 +81,9 @@ void	*simulate_dinner(void *philosopher)
 	wait_threads(philo->data);
 	long_pp(&philo->data->mutex_table, &philo->data->running_threads_count);
 	set_long_mutex(&philo->philo_mutex, &philo->last_meal, get_time(MILISEC));
-	if (philo->philo_id > 1 && philo->philo_id % 2 == 0)
-		usleep(philo->data->time_to_eat);
+	// if (philo->philo_id > 1 && philo->philo_id % 2 == 0)
+	// 	usleep(philo->data->time_to_eat);
+	desync_philos(philo);
 	while (!is_sim_end(philo->data))
 	{
 		if (philo->is_full)
@@ -66,7 +91,7 @@ void	*simulate_dinner(void *philosopher)
 		eating(philo);
 		print_state(philo, SLEEPING, DEBUG);
 		accurate_usleep(philo->data->time_to_sleep, philo->data);
-		thinking(philo);
+		thinking(philo, false);
 	}
 	return (NULL);
 }
