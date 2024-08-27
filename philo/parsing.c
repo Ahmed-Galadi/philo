@@ -6,7 +6,7 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 19:46:08 by agaladi           #+#    #+#             */
-/*   Updated: 2024/08/25 19:46:50 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/08/27 23:45:49 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,16 @@ static const char	*is_valid(const char *str)
 	if (*str == '+' || *str == '-')
 	{
 		if (*str == '-')
-			error_exit(RED""RESET);
+			return (error_exit(RED"ERROR!\nomly positive values r allowed!"RESET));
 		str++;
 	}
 	if (!ft_isnum(*str))
-		error_exit(RED"ERROR!\nPlease Enter Correct Numbers !"RESET);
+		return (error_exit(RED"ERROR!\nPlease Enter Correct Numbers !"RESET));
 	output = str;
 	while (ft_isnum(*str++))
 		++nbr_len;
 	if (nbr_len > 10)
-		error_exit(RED"ERROR!\nNumber is bigger than INT_MAX !"RESET);
+		return (error_exit(RED"ERROR!\nNumber is bigger than INT_MAX !"RESET));
 	return (output);
 }
 

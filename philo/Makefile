@@ -6,7 +6,7 @@
 #    By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/25 19:44:15 by agaladi           #+#    #+#              #
-#    Updated: 2024/08/26 23:18:40 by agaladi          ###   ########.fr        #
+#    Updated: 2024/08/28 00:12:44 by agaladi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ OUT = philo
 define PRINT_LOADING
 	@printf "$(COLOR)Compiling src/$*.c... ["
 	@for i in $(shell seq 0 20); do \
-		printf "\r$(COLOR)Compiling src/$*.c... ["; \
+		printf "\r$(COLOR)Compiling philo/$*.c... ["; \
 		for j in $$(seq 1 $$i); do printf "▓"; done; \
 		printf "]$(RESET)"; \
 	done; \
@@ -36,6 +36,12 @@ all: $(OUT)
 
 $(OUT): $(OBJS) $(DEPS)
 	@$(CC) $(CFLAGS) $(OBJS) -o $(OUT)
+	@printf "$(ORANGE)\n\
+			  ┓ •┓       ┓      \n\
+			┏┓┣┓┓┃┏┓┏┏┓┏┓┣┓┏┓┏┓┏\n\
+			┣┛┛┗┗┗┗┛┛┗┛┣┛┛┗┗ ┛ ┛\n\
+			┛          ┛        \n$(RESET)"
+	@printf "$(GREEN)\033[1m\t\t      is Ready!\n$(RESET)"
 
 %.o: %.c $(DEPS)
 	$(PRINT_LOADING)
@@ -43,9 +49,24 @@ $(OUT): $(OBJS) $(DEPS)
 
 clean:
 	@rm -rf $(OBJS)
+	@printf "\n     $(GREEN)\033[1mCleaned ✔$(RESET)\n"
 
 fclean: clean
 	@rm -rf $(OUT)
+	@printf "$(GREEN)\n\
+   ⠀⠀⢰⡟⠛⠛⠛⠛⢻⡆⠀⠀⠀⠀⠀⠀\n\
+⠀⣤⣤⣤⣤⣼⣧⣤⣤⣤⣤⣼⣧⣤⣤⣤⣤⠀⠀\n\
+⠀⠛⣛⣛⣛⣛⣛⣛⣛⣛⣛⣛⣛⣛⣛⣛⠛⠀⠀\n\
+⠀⠀⢻⣿⣿⢹⣿⣿⡏⢹⣿⣿⡏⣿⣿⡟⠀⠀⠀\n\
+⠀⠀⢸⣿⣿⠘⣿⣿⡇⢸⣿⣿⠃⣿⣿⡇⠀⠀⠀\n\
+⠀⠀⠸⣿⣿⠀⣿⣿⡇⢸⣿⣿⠀⣿⣿⠇⠀\n\
+⠀⠀⠀⣿⣿⠀⣿⣿⡇⢸⣿⣿⠀⣿⣿⠀⠀\n\
+⠀⠀⠀⣿⣿⠀⢿⣿⡇⢸⣿⡿⠀⣿⣿⠀⠀⠀\n\
+⠀⠀⠀⢸⣿⡆⢸⣿⡇⢸⣿⡇⢰⣿⡇⠀⠀⠀\n\
+⠀⠀⠀⢸⣿⡇⢸⣿⡇⢸⣿⡇⢸⣿⡇⠀\n\
+⠀⠀⠀⠈⣿⣷⣾⣿⣷⣾⣿⣷⣾⣿⠁⠀⠀⠀⠀\n\
+⠀⠀⠀⠀⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠀⠀⠀⠀⠀$(RESET)\n"
+	@printf "$(RED)\033[1mAll files are deleted!$(RESET)\n"
 
 re: fclean all
 

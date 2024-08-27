@@ -6,7 +6,7 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 23:38:38 by agaladi           #+#    #+#             */
-/*   Updated: 2024/08/27 15:41:54 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/08/27 16:52:09 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,22 @@
 void	print_state_debug(t_philo *philo, t_state state, long time_passed)
 {
 	if (state == FORK1_TAKE && !is_sim_end(philo->data))
-		printf(WHITE"%ld]]"RESET" %d has taken first fork [%d]\n",
-			time_passed, philo->philo_id, philo->fork_1->fork_id);
+		printf("%ld %d has taken a fork\n",
+			time_passed, philo->philo_id);
 	else if (state == FORK2_TAKE && !is_sim_end(philo->data))
-		printf(WHITE"%ld"RESET" %d has taken second fork [%d]\n",
-			time_passed, philo->philo_id, philo->fork_2->fork_id);
+		printf("%ld %d has taken a fork\n",
+			time_passed, philo->philo_id);
 	else if (state == EATING && !is_sim_end(philo->data))
-		printf(WHITE"%ld"RESET" %d is eating\tmeals[%d]\n",
-			time_passed, philo->philo_id, philo->meals_count);
+		printf("%ld %d is eating\n",
+			time_passed, philo->philo_id);
 	else if (state == THINKING && !is_sim_end(philo->data))
-		printf(WHITE"%ld"RESET" %d is thinking\n",
+		printf("%ld %d is thinking\n",
 			time_passed, philo->philo_id);
 	else if (state == SLEEPING && !is_sim_end(philo->data))
-		printf(WHITE"%ld"RESET" %d is sleeping\n",
+		printf("%ld %d is sleeping\n",
 			time_passed, philo->philo_id);
 	else if (state == DEATH)
-		printf(RED"%ld"RESET" %d is dead\n", time_passed, philo->philo_id);
+		printf("%ld %d is dead\n", time_passed, philo->philo_id);
 }
 
 void	print_state(t_philo *philo, t_state state, bool debug)

@@ -6,7 +6,7 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 09:35:48 by agaladi           #+#    #+#             */
-/*   Updated: 2024/08/27 15:39:30 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/08/27 23:46:12 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ struct	s_data
 	t_philo		*philos;
 };
 // error handler
-void	error_exit(const char *error_str);
+void	*error_exit(const char *error_str);
 // input parse
 void	parse_input_data(t_data **data, char **argv);
 // costum functions

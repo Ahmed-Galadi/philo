@@ -6,7 +6,7 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 17:45:49 by agaladi           #+#    #+#             */
-/*   Updated: 2024/08/26 22:42:36 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/08/28 00:16:47 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*cstm_malloc(size_t bites)
 
 	output = malloc(bites);
 	if (!output)
-		error_exit(RED"ERROR !\nAllocation failed!");
+		return (error_exit(RED"ERROR !\nAllocation failed!"), NULL);
 	return (output);
 }
 
