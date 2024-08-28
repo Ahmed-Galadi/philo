@@ -6,7 +6,7 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 19:46:08 by agaladi           #+#    #+#             */
-/*   Updated: 2024/08/28 20:54:44 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/08/28 21:15:52 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ static const char	*is_valid(const char *str)
 	if (*str == '+' || *str == '-')
 	{
 		if (*str == '-')
-			return (error_exit(RED"ERROR!\nonly positive values are allowed!"RESET), NULL);
+			return (NULL);
 		str++;
 	}
 	if (!ft_isnum(*str))
-		return (error_exit(RED"ERROR!\nPlease Enter Correct Numbers !"RESET), NULL);
+		return (NULL);
 	output = str;
 	while (ft_isnum(*str++))
 		++nbr_len;
@@ -65,7 +65,7 @@ static long	ft_atol(const char *str)
 	return (output);
 }
 
-int		parse_input_data(t_data **data, char **argv)
+int	parse_input_data(t_data **data, char **argv)
 {
 	(*data)->philo_nbr = ft_atol(argv[1]);
 	(*data)->time_to_die = ft_atol(argv[2]) * 1e3;

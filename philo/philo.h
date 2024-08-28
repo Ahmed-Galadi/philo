@@ -6,7 +6,7 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 09:35:48 by agaladi           #+#    #+#             */
-/*   Updated: 2024/08/28 20:55:45 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/08/28 21:16:41 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,8 @@ is sleeping ꒰꒡⌓꒡꒱zzz\033[0m\n"
 <time_to_eat> <time_to_sleep> [meals]\033[0m"
 
 # define PARSE_ERROR_MSG "\033[31mERROR!\nnumbers should be bigger than 0 \
-and time values should be more than 60ms (negative values and values bigger than MAX_INT are not allowed).\033[0m\n"
+and time values should be more than 60ms (negative values and values bigger \
+than MAX_INT are not allowed).\033[0m\n"
 
 # define DEBUG 0
 
