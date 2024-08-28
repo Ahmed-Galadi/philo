@@ -6,7 +6,7 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 19:43:10 by agaladi           #+#    #+#             */
-/*   Updated: 2024/08/28 00:17:44 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/08/28 20:48:12 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	philo_init(t_data *data)
 	}
 }
 
-void	data_init(t_data *data)
+void	*data_init(t_data *data)
 {
 	int		i;
 
@@ -54,13 +54,13 @@ void	data_init(t_data *data)
 	data->is_threads_ready = false;
 	data->running_threads_count = 0;
 	data->philos = cstm_malloc(sizeof(t_philo) * data->philo_nbr);
-	if (!data->philos)
-		return ;
+	if (!(data->philos))
+		return (NULL);
 	handle_mutex(&data->mutex_table, INIT);
 	handle_mutex(&data->mutex_print, INIT);
 	data->forks = cstm_malloc(sizeof(t_fork) * data->philo_nbr);
-	if (!data->forks)
-		return ;
+	if (!(data->forks))
+		return (NULL);
 	while (i < data->philo_nbr)
 	{
 		handle_mutex(&data->forks[i].fork, INIT);
@@ -68,4 +68,5 @@ void	data_init(t_data *data)
 		i++;
 	}
 	philo_init(data);
+	return ("WORKING!");
 }

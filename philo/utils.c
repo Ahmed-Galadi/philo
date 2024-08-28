@@ -6,7 +6,7 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 23:41:50 by agaladi           #+#    #+#             */
-/*   Updated: 2024/08/27 23:44:45 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/08/28 20:35:03 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ void	accurate_usleep(long usecond, t_data *data)
 	}
 }
 
-void	*error_exit(const char *error_str)
+void	error_exit(const char *error_str)
 {
 	printf("%s\n", error_str);
-	exit(EXIT_FAILURE);
+	//exit(EXIT_FAILURE);
 }

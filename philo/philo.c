@@ -6,7 +6,7 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 19:47:59 by agaladi           #+#    #+#             */
-/*   Updated: 2024/08/28 00:18:42 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/08/28 21:10:16 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,10 @@ int	main(int argc, char *argv[])
 		data = (t_data *)cstm_malloc(sizeof(t_data));
 		if (!data)
 			return (EXIT_FAILURE);
-		parse_input_data(&data, argv);
-		data_init(data);
+		if (parse_input_data(&data, argv) == -1)
+			return (error_exit(PARSE_ERROR_MSG),EXIT_FAILURE);
+		if (!data_init(data))
+			return (EXIT_FAILURE);
 		start_dining(data);
 		clean(&data);
 	}

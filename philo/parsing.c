@@ -6,7 +6,7 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 19:46:08 by agaladi           #+#    #+#             */
-/*   Updated: 2024/08/27 23:45:49 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/08/28 20:54:44 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,16 @@ static const char	*is_valid(const char *str)
 	if (*str == '+' || *str == '-')
 	{
 		if (*str == '-')
-			return (error_exit(RED"ERROR!\nomly positive values r allowed!"RESET));
+			return (error_exit(RED"ERROR!\nonly positive values are allowed!"RESET), NULL);
 		str++;
 	}
 	if (!ft_isnum(*str))
-		return (error_exit(RED"ERROR!\nPlease Enter Correct Numbers !"RESET));
+		return (error_exit(RED"ERROR!\nPlease Enter Correct Numbers !"RESET), NULL);
 	output = str;
 	while (ft_isnum(*str++))
 		++nbr_len;
 	if (nbr_len > 10)
-		return (error_exit(RED"ERROR!\nNumber is bigger than INT_MAX !"RESET));
+		return (NULL);
 	return (output);
 }
 
@@ -52,31 +52,41 @@ static long	ft_atol(const char *str)
 	int		i;
 
 	str = is_valid(str);
+	if (!str)
+		return (-1);
 	output = 0;
 	i = 0;
 	while (ft_isnum(str[i]))
 	{
 		output = (output * 10) + (str[i++] - '0');
 		if (output > INT_MAX)
-			error_exit(RED"ERROR!\nNumber is bigger than INT_MAX !"RESET);
+			return (-1);
 	}
 	return (output);
 }
 
-void	parse_input_data(t_data **data, char **argv)
+int		parse_input_data(t_data **data, char **argv)
 {
 	(*data)->philo_nbr = ft_atol(argv[1]);
 	(*data)->time_to_die = ft_atol(argv[2]) * 1e3;
 	(*data)->time_to_eat = ft_atol(argv[3]) * 1e3;
 	(*data)->time_to_sleep = ft_atol(argv[4]) * 1e3;
-	if ((*data)->philo_nbr <= 0)
-		error_exit(RED"ERROR !\nphilos_nbr sould be major than 0");
+	if ((*data)->philo_nbr <= 0
+		|| (*data)->time_to_die == -1
+		|| (*data)->time_to_eat == -1
+		|| (*data)->time_to_sleep == -1)
+		return (-1);
 	if ((*data)->time_to_die < 6e4
 		|| (*data)->time_to_eat < 6e4
 		|| (*data)->time_to_sleep < 6e4)
-		error_exit(RED"ERROR !\nValue should be major than 60ms");
+		return (-1);
 	if (argv[5])
+	{
 		(*data)->max_meals = ft_atol(argv[5]);
+		if ((*data)->max_meals == -1)
+			return (-1);
+	}
 	else
 		(*data)->max_meals = -1;
+	return (0);
 }

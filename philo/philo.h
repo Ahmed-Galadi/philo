@@ -6,7 +6,7 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 09:35:48 by agaladi           #+#    #+#             */
-/*   Updated: 2024/08/27 23:46:12 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/08/28 20:55:45 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,9 @@ is sleeping ꒰꒡⌓꒡꒱zzz\033[0m\n"
 \033[0m\033[1m\033[4mPlease Enter:\
 \033[0m\033[32m ./philo <philo_nbr> <time_to_die> \
 <time_to_eat> <time_to_sleep> [meals]\033[0m"
+
+# define PARSE_ERROR_MSG "\033[31mERROR!\nnumbers should be bigger than 0 \
+and time values should be more than 60ms (negative values and values bigger than MAX_INT are not allowed).\033[0m\n"
 
 # define DEBUG 0
 
@@ -137,12 +140,12 @@ struct	s_data
 	t_philo		*philos;
 };
 // error handler
-void	*error_exit(const char *error_str);
+void	error_exit(const char *error_str);
 // input parse
-void	parse_input_data(t_data **data, char **argv);
+int		parse_input_data(t_data **data, char **argv);
 // costum functions
 void	*cstm_malloc(size_t bites);
-void	data_init(t_data *data);
+void	*data_init(t_data *data);
 void	handle_thread(pthread_t *thread,
 			void *(*f)(void *), void *data, t_opcode code);
 void	handle_mutex(t_pmtx *mutex, t_opcode code);
